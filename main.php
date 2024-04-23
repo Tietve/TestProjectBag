@@ -93,13 +93,13 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Header2 link -->
-    <?php include "template/header2.php"?>
+    <?php include "template/header.php"?>
 <div class="container">
 <div class="row product">
     <?php
     require 'db.php'; // Kết nối với cơ sở dữ liệu
     
-    $sql = "SELECT productName, buyPrice, imageGallery, productAvailability FROM products";
+    $sql = "SELECT productName, buyPrice, productAvailability FROM products";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
@@ -109,7 +109,7 @@
             echo "<div class='card'>";
             echo "<div class='ccc'>";
             echo "<p class='text-center'>";
-            echo '<img src="data:image/jpg;base64,'.base64_encode($product['imageGallery']).'" class="imw">';
+           //echo '<img src="data:image/jpg;base64,'.base64_encode($product['imageGallery']).'" class="imw">';
             echo "</p>";
             echo "</div>";
             echo "<div class='card-body'>";
