@@ -1,10 +1,13 @@
 <?php
 
-$main = <<< EOT
+$mainCSS = <<< EOT
 .product {
     margin: 10px;
     padding: 10px;
     text-align: center;
+}
+.product a {
+    text-decoration: none;
 }
 .product h2 {
     font-size: 18px;
@@ -73,7 +76,7 @@ $main = <<< EOT
 }
 EOT;
 
-$product = <<< EOT
+$productCSS = <<< EOT
 #productGallery {
     height: 75vh; 
     width: 50vw; 
@@ -122,8 +125,8 @@ $product = <<< EOT
 EOT;
 
 function template_header($title, $page) {
-global $main, $product;
-$css = $page == 'main' ? $main : $product;
+global $mainCSS, $productCSS;
+$css = $page == 'main' ? $mainCSS : $productCSS;
 $html = <<< EOT
 <!doctype html>
 <html lang="en">
@@ -192,47 +195,34 @@ $html = <<< EOT
 <!-- Navbar content -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid ">
-        <a class="navbar-brand" href="#">BagBag</a>
+        <a class="navbar-brand" href="index.php">BagBag</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home </a>
+                    <a class="nav-link" href="index.php">Home </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Túi xách
+                        Categories
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                        <li><a class="dropdown-item" href="#">Link 1</a></li>
-                        <li><a class="dropdown-item" href="#">Link 2</a></li>
-                        <li><a class="dropdown-item" href="#">Link 3</a></li>
+                        <li><a class="dropdown-item" href="#">Backpacks</a></li>
+                        <li><a class="dropdown-item" href="#">Handbags</a></li>
+                        <li><a class="dropdown-item" href="#">Crossbody Bags</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Balo
+                        Brands
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                         <li><a class="dropdown-item" href="#">Link 1</a></li>
                         <li><a class="dropdown-item" href="#">Link 2</a></li>
                         <li><a class="dropdown-item" href="#">Link 3</a></li>
                     </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Bóp ví
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-                        <li><a class="dropdown-item" href="#">Link 1</a></li>
-                        <li><a class="dropdown-item" href="#">Link 2</a></li>
-                        <li><a class="dropdown-item" href="#">Link 3</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
                 </li>
             </ul>
         </div>
