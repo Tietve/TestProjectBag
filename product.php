@@ -18,36 +18,6 @@ if (isset($_GET['productCode'])) {
     exit('Product does not exist!');
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $feedback = $_POST["feedback"];
-
-    do {
-        if (empty($name) || empty($email) || empty($feedback)) {
-            $errorMsg = "All of the fields are required!";
-            break;
-        }
-
-        // Insert new client to the database
-        $sql = "INSERT INTO feedbacks (feedbackerName, feedbackerEmail, feedbackDescription, feedbackForProductCode) VALUES ('$name', '$email', '$feedback', '$address')";
-        $result = $conn->query($sql);
-
-        if (!$result) {
-            $errorMsg = "Invalid query: " . $conn->error;
-            break;
-        }
-
-        $name = "";
-        $email = "";
-        $phone = "";
-        $address = "";
-
-        $successMsg =  "Feedback successfully.";
-
-    } while (false);
-}
-
 ?>
 
 <?=template_header('Home', 'product')?>
