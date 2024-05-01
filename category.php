@@ -3,18 +3,25 @@
 require_once 'template/templates.php';
 require 'db.php'; // Kết nối với cơ sở dữ liệu
 
-$sql = "SELECT productCode, productName, buyPrice, productAvailability FROM products WHERE productGender IN ('Men', 'Unisex')";
-$result = $conn->query($sql);
+$products = [];
+
+$stmt = $conn->prepare("SELECT productCode, productName, buyPrice, productAvailability FROM products WHERE productCategory = ?");
+$stmt->bind_param('s', $_GET['productCategory']);
+$stmt->execute();
+$result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
-    $products_men[] = $row;
+    $products[] = $row;
 }
+$stmt->close();
+
 ?>
 
 <?=template_header('Home', 'main')?>
 
 <div class="container">
     <div class="row product">
-    <?php foreach ($products_men as $product): ?>
+    <h1><?php echo $_GET['productCategory'] ?></h1>
+    <?php foreach ($products as $product): ?>
         <a class='col-6 col-md-4 col-lg-3' href='index.php?page=product&productCode=<?=$product['productCode']?>'>
             <div class='card'>
                 <div class='ccc'>
@@ -41,4 +48,3 @@ while ($row = $result->fetch_assoc()) {
 </div>
 
 <?=template_footer()?>
-

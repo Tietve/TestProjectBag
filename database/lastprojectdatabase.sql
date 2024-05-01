@@ -55,7 +55,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
+-- Dummy data for table `products`
 --
 
 INSERT INTO `products` (`productCode`, `productName`, `productCategory`, `productGender`, `productBrand`, `productDescription`, `productSpecification`, `buyPrice`, `productAvailability`) VALUES

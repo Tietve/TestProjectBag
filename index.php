@@ -8,5 +8,5 @@ $page = isset($_GET['page']) && file_exists($_GET['page'] . '.php') ? $_GET['pag
 // Include and show the requested page
 include $page . '.php';
 
-$mysqli->close();
+$conn->close();
 ?>

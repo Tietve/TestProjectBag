@@ -66,7 +66,8 @@ if (isset($_GET['productCode'])) {
             <!-- Section 2: Description -->
             <div class="col-12 section">
                 <h4>Description</h4>
-                <p><?=$product['productDescription']?></p>
+                <p id="productDescription"><?=$product['productName']?><br><?=$product['productDescription']?></p>
+                <!-- <button onclick="downloadDocument()">Download Description</button> -->
             </div>
         </div>
         <div class="row">

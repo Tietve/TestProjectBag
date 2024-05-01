@@ -19,6 +19,7 @@ $mainCSS = <<< EOT
 }
 .product .price .original {
     text-decoration: line-through;
+    opacity: 0.5;
 }
 .sold-out {
     color: red;
@@ -72,7 +73,7 @@ $mainCSS = <<< EOT
     border: 1px solid;
     padding: 10px;
     box-shadow: 5px 10px #888888;
-    margin: 10px;
+    margin: 16px 0;
 }
 EOT;
 
@@ -140,6 +141,9 @@ $html = <<< EOT
         body {
             font-family: Arial, sans-serif;
         }
+        .content_template {
+            min-height: 40vh;
+        }
 
         /* Header CSS */
         .navbar-brand {
@@ -190,61 +194,64 @@ $html = <<< EOT
         /* Content CSS */
         $css
     </style>
+    
 </head>
 <body>
-<!-- Navbar content -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid ">
-        <a class="navbar-brand" href="index.php">BagBag</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Categories
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                        <li><a class="dropdown-item" href="#">Backpacks</a></li>
-                        <li><a class="dropdown-item" href="#">Handbags</a></li>
-                        <li><a class="dropdown-item" href="#">Crossbody Bags</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Brands
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                        <li><a class="dropdown-item" href="#">Link 1</a></li>
-                        <li><a class="dropdown-item" href="#">Link 2</a></li>
-                        <li><a class="dropdown-item" href="#">Link 3</a></li>
-                    </ul>
-                </li>
-            </ul>
+    <!-- Navbar content -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="index.php">BagBag</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">Home </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <li><a class="dropdown-item" href="index.php?page=category&productCategory=Backpack">Backpacks</a></li>
+                            <li><a class="dropdown-item" href="index.php?page=category&productCategory=Handbag">Handbags</a></li>
+                            <li><a class="dropdown-item" href="index.php?page=category&productCategory=Crossbody">Crossbody Bags</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Brands
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                            <li><a class="dropdown-item" href="index.php?page=brand&productBrand=Backpack">Link 1</a></li>
+                            <li><a class="dropdown-item" href="index.php?page=brand&productBrand=Backpack">Link 2</a></li>
+                            <li><a class="dropdown-item" href="index.php?page=brand&productBrand=Backpack">Link 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-outline-light text-dark my-2 my-sm-0 me-2">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-outline-light text-dark my-2 my-sm-0 me-2">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="btn btn-outline-light text-dark my-2 my-sm-0">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+            </div>
         </div>
-        <div class="d-flex justify-content-end">
-            <button class="btn btn-outline-light text-dark my-2 my-sm-0 me-2">
-                <i class="fas fa-search"></i>
-            </button>
-            <button class="btn btn-outline-light text-dark my-2 my-sm-0 me-2">
-                <i class="fas fa-user"></i>
-            </button>
-            <button class="btn btn-outline-light text-dark my-2 my-sm-0">
-                <i class="fas fa-shopping-cart"></i>
-            </button>
-        </div>
-    </div>
-</nav>
+    </nav>
+<div class="content_template">
 EOT;
 echo $html;
 }
 
 function template_footer() {
 $html = <<< EOT
+</div>
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -297,7 +304,6 @@ $html = <<< EOT
         </div>
     </div>
 </footer>
-<script src="https://kit.fontawesome.com/yourkit.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
